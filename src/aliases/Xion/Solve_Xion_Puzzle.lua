@@ -7,7 +7,7 @@ local items = {
   "cylinder",
   "pyramid" 
 }
-local mms = require("MDK.mastermindsolver")
+local mms = require("@PKGNAME@.mastermindsolver")
 MMSolver = mms:new({
   places = 4,
   items = items,
