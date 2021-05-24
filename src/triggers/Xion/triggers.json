@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Xion entry read",
+    "patterns": [
+      {
+        "pattern": "An entry panel begins to glow as lights on the crystal buttons blink on and off.",
+        "type": "exactMatch"
+      }
+    ],
+    "script": "MMSCOLOREDPINS = 0\nMMSWHITEPINS=0",
+    "children": [
+      {
+        "name": "single colored",
+        "patterns": [
+          {
+            "pattern": "displays a single green circle",
+            "type": "substring"
+          }
+        ],
+        "script": "MMSCOLOREDPINS = 1"
+      },
+      {
+        "name": "single uncolored",
+        "patterns": [
+          {
+            "pattern": "flashes briefly with a single dot of light",
+            "type": "substring"
+          }
+        ],
+        "script": "MMSWHITEPINS = 1"
+      },
+      {
+        "name": "multiple colored",
+        "patterns": [
+          {
+            "pattern": "displays (\\d+) green circles",
+            "type": "regex"
+          }
+        ],
+        "script": "MMSCOLOREDPINS=tonumber(matches[2])"
+      },
+      {
+        "name": "multiple uncolored",
+        "patterns": [
+          {
+            "pattern": "flashes briefly with (\\d+) dots of light",
+            "type": "substring"
+          }
+        ],
+        "script": "MMSWHITEPINS=tonumber(matches[2])"
+      },
+      {
+        "name": "Process response",
+        "patterns": [
+          {
+            "pattern": "An entry panel quickly goes dark again.",
+            "type": "exactMatch"
+          },
+          {
+            "pattern": " before going dark again\\.$",
+            "type": "regex"
+          }
+        ]
+      }
+    ]    
+  },
+  {
+    "name": "XionCleared",
+    "patterns": [
+      {
+        "pattern": "The panel goes completely dark and then lights up again, all previous entries cleared.",
+        "type": "exactMatch"
+      },
+      {
+        "pattern": "The panel flashes with a multitude of lights and a soft tremor rumbles through the room, as if structures elsewhere are moving.",
+        "type": "exactMatch"
+      }
+    ]
+  }
+]

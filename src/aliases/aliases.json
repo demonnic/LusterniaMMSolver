@@ -1,0 +1,6 @@
+[
+  {
+    "name": "Solve Xion Puzzle",
+    "pattern": "^xsolve$"
+  }
+]
