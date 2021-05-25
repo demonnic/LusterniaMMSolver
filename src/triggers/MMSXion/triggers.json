@@ -3,11 +3,11 @@
     "name": "Xion entry read",
     "patterns": [
       {
-        "pattern": "An entry panel begins to glow as lights on the crystal buttons blink on and off.",
-        "type": "exactMatch"
+        "pattern": "panel begins to glow as lights on the crystal buttons blink on and off.",
+        "type": "substring"
       }
     ],
-    "script": "MMSCOLOREDPINS = 0\nMMSWHITEPINS=0",
+    "fireLength": "10",
     "children": [
       {
         "name": "single colored",
@@ -17,7 +17,7 @@
             "type": "substring"
           }
         ],
-        "script": "MMSCOLOREDPINS = 1"
+        "script": "MMSolver.MMSCOLOREDPINS = 1"
       },
       {
         "name": "single uncolored",
@@ -27,7 +27,7 @@
             "type": "substring"
           }
         ],
-        "script": "MMSWHITEPINS = 1"
+        "script": "MMSolver.MMSWHITEPINS = 1"
       },
       {
         "name": "multiple colored",
@@ -37,17 +37,17 @@
             "type": "regex"
           }
         ],
-        "script": "MMSCOLOREDPINS=tonumber(matches[2])"
+        "script": "MMSolver.MMSCOLOREDPINS=tonumber(matches[2])"
       },
       {
         "name": "multiple uncolored",
         "patterns": [
           {
             "pattern": "flashes briefly with (\\d+) dots of light",
-            "type": "substring"
+            "type": "regex"
           }
         ],
-        "script": "MMSWHITEPINS=tonumber(matches[2])"
+        "script": "MMSolver.MMSWHITEPINS=tonumber(matches[2])"
       },
       {
         "name": "Process response",
@@ -74,6 +74,10 @@
       {
         "pattern": "The panel flashes with a multitude of lights and a soft tremor rumbles through the room, as if structures elsewhere are moving.",
         "type": "exactMatch"
+      },
+      {
+        "pattern": "of the three lights on top of a control panel blinks on and off, then turns off.",
+        "type": "substring"
       }
     ]
   }

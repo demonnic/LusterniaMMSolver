@@ -1,6 +1,6 @@
 [
   {
     "name": "Solve Xion Puzzle",
-    "pattern": "^xsolve$"
+    "regex": "^xsolve$"
   }
 ]
